@@ -1,0 +1,6 @@
+type News {
+  title: String!,
+  content: String!,
+  data: Date!,
+  author: Int!
+}
