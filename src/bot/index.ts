@@ -19,7 +19,7 @@ export { stage };
 
 import './scenes/lostContact';
 
-bot.telegram.getMe().then(u => bot.options.username = u.username);
+bot.telegram.getMe().then(u => bot.options.username = u.username).catch(err => logger.error('Failed to fetch information about the bot:', err.toString()));
 
 import './core/context';
 
@@ -36,5 +36,6 @@ import './actions/suggestion';
 */
 Database.get().then(() => {
   logger.info('Starting pulling updates for the Telegram bot');
-  bot.launch();
+  
+  bot.launch().catch(err =>  logger.error('Failed to launch the bot:', err.toString()));
 });
